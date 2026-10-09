@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ukulele chord helper</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1>Ukulele chord helper</h1>
+
+    <!-- A <form> gives us "press Enter to submit" for free. app.js intercepts
+         the submit so the page doesn't reload. -->
+    <form id="chord-form">
+      <label for="chord-input">Chord name</label>
+      <div class="row">
+        <input id="chord-input" type="text" value="C" autocomplete="off"
+               autocapitalize="off" spellcheck="false" aria-describedby="hint">
+        <button type="submit">Show chord</button>
+      </div>
+      <p id="hint">Try F#m7, Bbsus4 or Gdim. Types: m, 7, maj7, m7, sus2, sus4, dim.</p>
+    </form>
+
+    <!-- aria-live makes screen readers announce errors when they appear. -->
+    <p id="error" role="alert" aria-live="polite"></p>
+
+    <!-- The fretboard panel. app.js fills in #chord-title, #diagram and #fret-text. -->
+    <section id="result" aria-label="Chord diagram" hidden>
+      <h2 id="chord-title"></h2>
+      <div id="diagram"></div>
+      <p id="fret-text"></p>
+    </section>
+
+    <div class="row transpose" id="transpose-controls" hidden>
+      <button type="button" id="down">Down 1 semitone</button>
+      <button type="button" id="up">Up 1 semitone</button>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

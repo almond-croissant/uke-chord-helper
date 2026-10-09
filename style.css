@@ -1,0 +1,86 @@
+/* Colours live in variables so you can retheme from one place. */
+:root {
+  --page: #e9eff0;
+  --ink: #17292e;
+  --accent: #1d6a73;
+  --accent-ink: #ffffff;
+  --error: #a3262a;
+
+  /* The diagram is styled like a real fretboard: dark rosewood, brass
+     strings and frets, pearl finger dots. */
+  --wood: #35241f;
+  --brass: #c9b27c;
+  --pearl: #f4efe4;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--ink);
+  font: 1rem/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+main {
+  max-width: 30rem;
+  margin: 0 auto;
+  padding: 2rem 1rem 3rem;
+}
+
+h1 { font-size: 1.5rem; margin: 0 0 1.5rem; }
+
+label { display: block; font-weight: 600; margin-bottom: 0.25rem; }
+
+.row { display: flex; gap: 0.5rem; }
+
+input, button {
+  font: inherit;
+  padding: 0.6rem 0.8rem;
+  border-radius: 6px;
+  border: 1px solid #8aa0a4;
+}
+input { flex: 1; min-width: 0; background: #fff; color: var(--ink); }
+
+button {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+  cursor: pointer;
+}
+button:hover { filter: brightness(1.12); }
+
+#hint { margin: 0.5rem 0 0; font-size: 0.9rem; color: #46595e; }
+
+#error { min-height: 1.5rem; margin: 1rem 0 0; color: var(--error); font-weight: 600; }
+
+/* ---- The fretboard panel ---- */
+#result {
+  margin-top: 0.5rem;
+  padding: 1.25rem 1rem 1rem;
+  background: var(--wood);
+  color: var(--pearl);
+  border-radius: 10px;
+  text-align: center;
+}
+#result[hidden], #transpose-controls[hidden] { display: none; }  /* keep [hidden] winning over our own display rules */
+
+#chord-title {
+  margin: 0;
+  font: 600 2.5rem/1.1 Georgia, "Times New Roman", serif;
+}
+
+#diagram svg { width: 100%; max-width: 15rem; height: auto; }
+
+#fret-text { margin: 0.25rem 0 0; font-size: 0.9rem; opacity: 0.85; }
+
+.transpose { margin-top: 1rem; }
+.transpose button { flex: 1; }
+
+/* ---- The SVG pieces. app.js gives each element a class; the look is set here. ---- */
+.fret-line  { stroke: var(--brass); stroke-width: 1.5; }
+.nut        { stroke: var(--pearl); stroke-width: 5; }
+.string     { stroke: var(--brass); stroke-width: 2; }
+.dot        { fill: var(--pearl); }
+.open-mark  { fill: none; stroke: var(--pearl); stroke-width: 2; }
+.label      { fill: var(--pearl); font: 12px system-ui, sans-serif; opacity: 0.8; }
