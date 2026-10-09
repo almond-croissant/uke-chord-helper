@@ -1,0 +1,19 @@
+.song-layout { display: grid; grid-template-columns: 200px 1fr; gap: 1.5rem; margin-top: 2rem; }
+@media (max-width: 700px) { .song-layout { grid-template-columns: 1fr; } }
+#song-list { list-style: none; padding: 0; margin: 0; }
+#song-list li { display: flex; justify-content: space-between; gap: .5rem; }
+#song-list .link { background: none; border: 0; padding: .2rem 0; cursor: pointer; text-align: left; text-decoration: underline; color: inherit; }
+#song-list .del { background: none; border: 0; cursor: pointer; color: inherit; opacity: .6; }
+.song-main input, .song-main textarea { width: 100%; box-sizing: border-box; margin-bottom: .5rem; font: inherit; }
+.song-controls { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; margin-bottom: .5rem; }
+#song-note { font-style: italic; margin-bottom: .5rem; }
+#song-chart { margin: 1rem 0; line-height: 1.2; }
+.song-line { min-height: 2.6em; display: flex; flex-wrap: wrap; align-items: flex-end; }
+.song-seg { display: inline-flex; flex-direction: column; }
+.song-chord { font-weight: bold; color: #c0392b; min-height: 1.2em; padding-right: .5em; }
+.song-text { white-space: pre; }
+#song-strip { display: flex; flex-wrap: wrap; gap: .75rem; }
+.chord-card { text-align: center; }
+.chord-name { font-weight: bold; }
+.chord-unknown { font-size: .8em; opacity: .6; }
+.muted { opacity: .6; }

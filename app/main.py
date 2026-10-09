@@ -9,6 +9,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.staticfiles import StaticFiles
 
 from .chords import get_chord
+from .song_routes import router as song_router
 from .theory import transpose
 
 # The "static" folder sits next to the "app" folder. Building the path from
@@ -42,6 +43,11 @@ def api_transpose(chord: str, semitones: int) -> dict:
         return get_chord(transpose(chord, semitones))
     except ValueError as err:
         raise HTTPException(status_code=400, detail=str(err))
+
+
+# Song endpoints (/api/song/render and /api/songs...). Must be registered
+# BEFORE the static mount below, or the "/" mount would swallow these URLs.
+app.include_router(song_router)
 
 
 # Serve everything in static/ (index.html, app.js, style.css). This mount is
